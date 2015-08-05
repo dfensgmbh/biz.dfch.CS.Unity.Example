@@ -40,6 +40,23 @@ namespace biz.dfch.CS.Unity.Example.Tests
             Assert.AreEqual(SIMPLE_INJECTION_CANDIDATE, objectWithInjection.GetNameOfInjectedCandidate());
         }
 
+        /**
+         * Sometimes, you may want to resolve an object from the container,
+         * but defer the creation of the object until you need to use it.
+         * You can achieve this with Unity by using the Lazy<T> type from the .NET Framework;
+         * this type provides support for the lazy initialization of objects.
+         **/
+        [TestMethod]
+        public void SimpleDeferredConstructorInjectionByTypeTest()
+        {
+            _container = new UnityContainer();
+            _container.RegisterType<IInjectionCandidate, SimpleInjectionCandidate>();
+
+            var objectWithInjection = _container.Resolve<Lazy<SomeClass>>();
+
+            Assert.AreEqual(SIMPLE_INJECTION_CANDIDATE, objectWithInjection.Value.GetNameOfInjectedCandidate());
+        }
+
         [TestMethod]
         public void ConstructorInjectionByTypeWithConstructorArgumentsTest()
         {
