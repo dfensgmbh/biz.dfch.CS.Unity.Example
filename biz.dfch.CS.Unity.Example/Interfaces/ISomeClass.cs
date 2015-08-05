@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-namespace biz.dfch.CS.Unity.Example
+using System;
+
+namespace biz.dfch.CS.Unity.Example.Interfaces
 {
-    /**
-     * Interface to be inherited from possible injection candidates.
-     **/
-    public interface IObjectToInject
+    public interface ISomeClass
     {
-        int GetId();
+        String GetNameOfInjectedCandidate();
     }
 }

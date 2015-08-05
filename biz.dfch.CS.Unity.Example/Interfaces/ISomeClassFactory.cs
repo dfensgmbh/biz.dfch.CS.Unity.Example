@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright 2015 Marc Rufer, d-fens GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,23 +14,12 @@
  * limitations under the License.
  */
 
-namespace biz.dfch.CS.Unity.Example
+using System;
+
+namespace biz.dfch.CS.Unity.Example.Interfaces
 {
-    /**
-     * Implementation of an injection candidate with constructor argument
-     **/
-    public class ObjectToInjectWithCustomConstructor : IObjectToInject
+    public interface ISomeClassFactory
     {
-        private int _id;
-
-        public ObjectToInjectWithCustomConstructor(int id)
-        {
-            _id = id;
-        }
-
-        public int GetId()
-        {
-            return _id;
-        }
+        ISomeClass Create(String name);
     }
 }

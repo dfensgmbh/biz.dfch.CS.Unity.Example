@@ -15,6 +15,7 @@
  */
 
 using System;
+using biz.dfch.CS.Unity.Example.Interfaces;
 using Microsoft.Practices.Unity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -23,36 +24,39 @@ namespace biz.dfch.CS.Unity.Example.Tests
     [TestClass]
     public class ConstructorInjectionTests
     {
+        private const String SIMPLE_INJECTION_CANDIDATE = "Simple Injection Candidate";
+        private const String INJECTION_CANDIDATE_WITH_CUSTOM_CONSTRUCTOR_NAME = "Injection Candidate With Custom Constructor";
+
         private UnityContainer _container;
 
         [TestMethod]
         public void SimpleConstructorInjectionByTypeTest()
         {
             _container = new UnityContainer();
-            _container.RegisterType<IObjectToInject, SimpleObjectToInject>();
-            var objectWithInjection = _container.Resolve<ConstructorInjection>();
-            Assert.AreEqual(42, objectWithInjection.GetIdOfInjectedObject());
+            _container.RegisterType<IInjectionCandidate, SimpleInjectionCandidate>();
+            var objectWithInjection = _container.Resolve<SomeClass>();
+            Assert.AreEqual(SIMPLE_INJECTION_CANDIDATE, objectWithInjection.GetNameOfInjectedCandidate());
         }
 
         [TestMethod]
         public void ConstructorInjectionByTypeWithConstructorArgumentsTest()
         {
             _container = new UnityContainer();
-            _container.RegisterType<IObjectToInject, ObjectToInjectWithCustomConstructor>(
-                new InjectionConstructor(77));
-            var objectWithInjection = _container.Resolve<ConstructorInjection>();
-            Assert.AreEqual(77, objectWithInjection.GetIdOfInjectedObject());
+            _container.RegisterType<IInjectionCandidate, InjectionCandidateWithCustomConstructor>(
+                new InjectionConstructor(INJECTION_CANDIDATE_WITH_CUSTOM_CONSTRUCTOR_NAME));
+            var objectWithInjection = _container.Resolve<SomeClass>();
+            Assert.AreEqual(INJECTION_CANDIDATE_WITH_CUSTOM_CONSTRUCTOR_NAME, objectWithInjection.GetNameOfInjectedCandidate());
         }
 
         [TestMethod]
         public void ConstructorInjectionByTypeWithConstructorArgumentsProvidedAtResolveTest()
         {
             _container = new UnityContainer();
-            _container.RegisterType<IObjectToInject, ObjectToInjectWithCustomConstructor>(
-                new InjectionConstructor(typeof(int)));
-            var objectWithInjection = _container.Resolve<ConstructorInjection>(
-                new ParameterOverride("id", 77));
-            Assert.AreEqual(77, objectWithInjection.GetIdOfInjectedObject());
+            _container.RegisterType<IInjectionCandidate, InjectionCandidateWithCustomConstructor>(
+                new InjectionConstructor(typeof(String)));
+            var objectWithInjection = _container.Resolve<SomeClass>(
+                new ParameterOverride("name", INJECTION_CANDIDATE_WITH_CUSTOM_CONSTRUCTOR_NAME));
+            Assert.AreEqual(INJECTION_CANDIDATE_WITH_CUSTOM_CONSTRUCTOR_NAME, objectWithInjection.GetNameOfInjectedCandidate());
         }
     }
 }

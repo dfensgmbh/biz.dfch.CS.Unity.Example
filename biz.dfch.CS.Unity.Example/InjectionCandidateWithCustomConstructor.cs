@@ -15,27 +15,25 @@
  */
 
 using System;
+using biz.dfch.CS.Unity.Example.Interfaces;
 
 namespace biz.dfch.CS.Unity.Example
 {
     /**
-     * Here the 'IObjectToInject' implementation will be injected by the test class.
+     * Implementation of an injection candidate with a constructor argument
      **/
-    public class ConstructorInjection
+    public class InjectionCandidateWithCustomConstructor : IInjectionCandidate
     {
-        private IObjectToInject _objectToInject;
+        private String _name;
 
-        /**
-         * Sample constructor for constructor injection
-         **/
-        public ConstructorInjection(IObjectToInject objectToInject)
+        public InjectionCandidateWithCustomConstructor(String name)
         {
-            _objectToInject = objectToInject;
+            _name = name;
         }
 
-        public int GetIdOfInjectedObject()
+        public String GetName()
         {
-            return _objectToInject.GetId();
+            return _name;
         }
     }
 }

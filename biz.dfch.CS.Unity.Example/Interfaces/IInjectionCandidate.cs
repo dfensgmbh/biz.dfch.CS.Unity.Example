@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright 2015 Marc Rufer, d-fens GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,16 +14,15 @@
  * limitations under the License.
  */
 
-namespace biz.dfch.CS.Unity.Example
+using System;
+
+namespace biz.dfch.CS.Unity.Example.Interfaces
 {
     /**
-     * Simple implementation of an injection candidate
+     * Interface to be inherited from possible injection candidates.
      **/
-    public class SimpleObjectToInject : IObjectToInject
+    public interface IInjectionCandidate
     {
-        public int GetId()
-        {
-            return 42;
-        }
+        String GetName();
     }
 }

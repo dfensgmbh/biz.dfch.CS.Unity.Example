@@ -60,13 +60,11 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ConstructorInjectionTests.cs" />
+    <Compile Include="InjectionWithRuntimeInformationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\biz.dfch.CS.Unity.Example\biz.dfch.CS.Unity.Example.csproj">
