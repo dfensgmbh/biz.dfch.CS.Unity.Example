@@ -34,7 +34,9 @@ namespace biz.dfch.CS.Unity.Example.Tests
         {
             _container = new UnityContainer();
             _container.RegisterType<IInjectionCandidate, SimpleInjectionCandidate>();
+            
             var objectWithInjection = _container.Resolve<SomeClass>();
+            
             Assert.AreEqual(SIMPLE_INJECTION_CANDIDATE, objectWithInjection.GetNameOfInjectedCandidate());
         }
 
@@ -44,7 +46,9 @@ namespace biz.dfch.CS.Unity.Example.Tests
             _container = new UnityContainer();
             _container.RegisterType<IInjectionCandidate, InjectionCandidateWithCustomConstructor>(
                 new InjectionConstructor(INJECTION_CANDIDATE_WITH_CUSTOM_CONSTRUCTOR_NAME));
+            
             var objectWithInjection = _container.Resolve<SomeClass>();
+            
             Assert.AreEqual(INJECTION_CANDIDATE_WITH_CUSTOM_CONSTRUCTOR_NAME, objectWithInjection.GetNameOfInjectedCandidate());
         }
 
@@ -54,9 +58,27 @@ namespace biz.dfch.CS.Unity.Example.Tests
             _container = new UnityContainer();
             _container.RegisterType<IInjectionCandidate, InjectionCandidateWithCustomConstructor>(
                 new InjectionConstructor(typeof(String)));
+            
             var objectWithInjection = _container.Resolve<SomeClass>(
                 new ParameterOverride("name", INJECTION_CANDIDATE_WITH_CUSTOM_CONSTRUCTOR_NAME));
+            
             Assert.AreEqual(INJECTION_CANDIDATE_WITH_CUSTOM_CONSTRUCTOR_NAME, objectWithInjection.GetNameOfInjectedCandidate());
+        }
+
+        [TestMethod]
+        public void ConstructorInjectionByNamedTypeTest()
+        {
+            _container = new UnityContainer();
+            _container.RegisterType<IInjectionCandidate, InjectionCandidateWithCustomConstructor>("InjectionCandidate1",
+                new InjectionConstructor("candidate1"));
+            _container.RegisterType<IInjectionCandidate, InjectionCandidateWithCustomConstructor>("InjectionCandidate2",
+                new InjectionConstructor("candidate2"));
+
+            var objectWithInjection = _container.Resolve<IInjectionCandidate>("InjectionCandidate1");
+            Assert.AreEqual("candidate1", objectWithInjection.GetName());
+
+            objectWithInjection = _container.Resolve<IInjectionCandidate>("InjectionCandidate2");
+            Assert.AreEqual("candidate2", objectWithInjection.GetName());
         }
     }
 }
