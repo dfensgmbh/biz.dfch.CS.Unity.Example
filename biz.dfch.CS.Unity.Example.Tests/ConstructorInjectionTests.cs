@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+using System;
 using Microsoft.Practices.Unity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -22,22 +23,35 @@ namespace biz.dfch.CS.Unity.Example.Tests
     [TestClass]
     public class ConstructorInjectionTests
     {
+        private UnityContainer _container;
+
         [TestMethod]
         public void SimpleConstructorInjectionByTypeTest()
         {
-            var container = new UnityContainer();
-            container.RegisterType<IObjectToInject, SimpleObjectToInject>();
-            var objectWithInjection = container.Resolve<ConstructorInjection>();
+            _container = new UnityContainer();
+            _container.RegisterType<IObjectToInject, SimpleObjectToInject>();
+            var objectWithInjection = _container.Resolve<ConstructorInjection>();
             Assert.AreEqual(42, objectWithInjection.GetIdOfInjectedObject());
         }
 
         [TestMethod]
         public void ConstructorInjectionByTypeWithConstructorArgumentsTest()
         {
-            var container = new UnityContainer();
-            container.RegisterType<IObjectToInject, ObjectToInjectWithCustomConstructor>(
+            _container = new UnityContainer();
+            _container.RegisterType<IObjectToInject, ObjectToInjectWithCustomConstructor>(
                 new InjectionConstructor(77));
-            var objectWithInjection = container.Resolve<ConstructorInjection>();
+            var objectWithInjection = _container.Resolve<ConstructorInjection>();
+            Assert.AreEqual(77, objectWithInjection.GetIdOfInjectedObject());
+        }
+
+        [TestMethod]
+        public void ConstructorInjectionByTypeWithConstructorArgumentsProvidedAtResolveTest()
+        {
+            _container = new UnityContainer();
+            _container.RegisterType<IObjectToInject, ObjectToInjectWithCustomConstructor>(
+                new InjectionConstructor(typeof(int)));
+            var objectWithInjection = _container.Resolve<ConstructorInjection>(
+                new ParameterOverride("id", 77));
             Assert.AreEqual(77, objectWithInjection.GetIdOfInjectedObject());
         }
     }
