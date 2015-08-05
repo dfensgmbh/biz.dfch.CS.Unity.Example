@@ -16,6 +16,9 @@
 
 namespace biz.dfch.CS.Unity.Example
 {
+    /**
+     * Interface to be inherited from possible injection candidates.
+     **/
     public interface IObjectToInject
     {
         int GetId();

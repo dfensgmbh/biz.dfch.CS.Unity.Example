@@ -16,6 +16,9 @@
 
 namespace biz.dfch.CS.Unity.Example
 {
+    /**
+     * Simple implementation of an injection candidate
+     **/
     public class SimpleObjectToInject : IObjectToInject
     {
         public int GetId()

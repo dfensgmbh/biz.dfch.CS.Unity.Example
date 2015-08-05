@@ -16,6 +16,9 @@
 
 namespace biz.dfch.CS.Unity.Example
 {
+    /**
+     * Implementation of an injection candidate with constructor argument
+     **/
     public class ObjectToInjectWithCustomConstructor : IObjectToInject
     {
         private int Id;

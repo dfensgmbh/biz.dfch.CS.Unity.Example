@@ -16,10 +16,16 @@
 ﻿
 namespace biz.dfch.CS.Unity.Example
 {
+    /**
+     * Here the 'IObjectToInject' implementation will be injected by the test class.
+     **/
     public class ConstructorInjection
     {
         private IObjectToInject _objectToInject;
 
+        /**
+         * Sample constructor for constructor injection
+         **/
         public ConstructorInjection(IObjectToInject objectToInject)
         {
             _objectToInject = objectToInject;
