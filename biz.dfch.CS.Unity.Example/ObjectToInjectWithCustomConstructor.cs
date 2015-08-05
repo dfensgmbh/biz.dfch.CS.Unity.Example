@@ -21,16 +21,16 @@ namespace biz.dfch.CS.Unity.Example
      **/
     public class ObjectToInjectWithCustomConstructor : IObjectToInject
     {
-        private int Id;
+        private int _id;
 
         public ObjectToInjectWithCustomConstructor(int id)
         {
-            Id = id;
+            _id = id;
         }
 
         public int GetId()
         {
-            return Id;
+            return _id;
         }
     }
 }
