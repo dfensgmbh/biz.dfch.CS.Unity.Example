@@ -14,26 +14,27 @@
  * limitations under the License.
  */
 
-using System;
-using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Configuration;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+﻿using biz.dfch.CS.Unity.Example.Interfaces;
+﻿using Microsoft.Practices.Unity;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace biz.dfch.CS.Unity.Example.Tests
 {
     [TestClass]
-    public class XMLContainerConfigurationTest
+    public class MethodInjectionTest
     {
-        private IUnityContainer _container;
         private const String SIMPLE_INJECTION_CANDIDATE = "Simple Injection Candidate";
 
+        private IUnityContainer _container;
+
         [TestMethod]
-        public void ConstructorInjectionWithConfigurationFromXMLTest()
+        public void SimpleMethodInjectionByTypeTest()
         {
             _container = new UnityContainer();
-            _container.LoadConfiguration();
+            _container.RegisterType<IInjectionCandidate, SimpleInjectionCandidate>();
 
-            var objectWithInjection = _container.Resolve<SomeClass>();
+            var objectWithInjection = _container.Resolve<SomeClassWithMethod>();
 
             Assert.AreEqual(SIMPLE_INJECTION_CANDIDATE, objectWithInjection.GetNameOfInjectedCandidate());
         }

@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SomeClassWithMethod.cs" />
+    <Compile Include="SomeClassWithProperty.cs" />
     <Compile Include="Interfaces\ISomeClass.cs" />
     <Compile Include="SomeClassFactory.cs" />
     <Compile Include="InjectionCandidateWithCustomConstructor.cs" />

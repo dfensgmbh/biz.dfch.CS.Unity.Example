@@ -61,6 +61,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ConstructorInjectionTest.cs" />
+    <Compile Include="MethodInjectionTest.cs" />
+    <Compile Include="PropertyInjectionTest.cs" />
     <Compile Include="XMLContainerConfigurationTest.cs" />
     <Compile Include="InjectionWithRuntimeInformationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
