@@ -22,7 +22,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace biz.dfch.CS.Unity.Example.Tests
 {
     [TestClass]
-    public class XMLConfigurationTest
+    public class XMLContainerConfigurationTest
     {
         private IUnityContainer _container;
         private const String SIMPLE_INJECTION_CANDIDATE = "Simple Injection Candidate";
