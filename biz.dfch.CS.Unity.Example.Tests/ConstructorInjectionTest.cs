@@ -22,12 +22,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace biz.dfch.CS.Unity.Example.Tests
 {
     [TestClass]
-    public class ConstructorInjectionTests
+    public class ConstructorInjectionTest
     {
         private const String SIMPLE_INJECTION_CANDIDATE = "Simple Injection Candidate";
         private const String INJECTION_CANDIDATE_WITH_CUSTOM_CONSTRUCTOR_NAME = "Injection Candidate With Custom Constructor";
 
-        private UnityContainer _container;
+        private IUnityContainer _container;
 
         [TestMethod]
         public void SimpleConstructorInjectionByTypeTest()

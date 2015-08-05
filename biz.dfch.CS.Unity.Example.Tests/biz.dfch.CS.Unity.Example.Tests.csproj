@@ -45,6 +45,7 @@
       <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -59,11 +60,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ConstructorInjectionTests.cs" />
+    <Compile Include="ConstructorInjectionTest.cs" />
+    <Compile Include="XMLConfigurationTest.cs" />
     <Compile Include="InjectionWithRuntimeInformationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
