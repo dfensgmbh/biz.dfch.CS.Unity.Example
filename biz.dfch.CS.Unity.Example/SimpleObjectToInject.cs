@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright 2015 Marc Rufer, d-fens GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,17 +14,13 @@
  * limitations under the License.
  */
 
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace biz.dfch.CS.Unity.Example.Tests
+namespace biz.dfch.CS.Unity.Example
 {
-    [TestClass]
-    public class DependencyInjectionTests
+    public class SimpleObjectToInject : IObjectToInject
     {
-        [TestMethod]
-        public void TestMethod1()
+        public int GetId()
         {
+            return 42;
         }
     }
 }

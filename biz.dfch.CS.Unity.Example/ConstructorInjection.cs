@@ -16,7 +16,18 @@
 ﻿
 namespace biz.dfch.CS.Unity.Example
 {
-    public class DependencyInjection
+    public class ConstructorInjection
     {
+        private IObjectToInject _objectToInject;
+
+        public ConstructorInjection(IObjectToInject objectToInject)
+        {
+            _objectToInject = objectToInject;
+        }
+
+        public int GetIdOfInjectedObject()
+        {
+            return _objectToInject.GetId();
+        }
     }
 }

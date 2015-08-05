@@ -39,7 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DependencyInjection.cs" />
+    <Compile Include="ObjectToInjectWithCustomConstructor.cs" />
+    <Compile Include="SimpleObjectToInject.cs" />
+    <Compile Include="ConstructorInjection.cs" />
+    <Compile Include="IObjectToInject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
