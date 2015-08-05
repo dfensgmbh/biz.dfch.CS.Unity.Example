@@ -20,7 +20,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace biz.dfch.CS.Unity.Example.Tests
 {
     [TestClass]
-    public class ConstructorInjectionTests
+    public class DependencyInjectionTests
     {
         [TestMethod]
         public void TestMethod1()

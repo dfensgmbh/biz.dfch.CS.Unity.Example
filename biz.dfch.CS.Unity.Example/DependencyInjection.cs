@@ -16,7 +16,7 @@
 ﻿
 namespace biz.dfch.CS.Unity.Example
 {
-    public class ConstructorInjection
+    public class DependencyInjection
     {
     }
 }
